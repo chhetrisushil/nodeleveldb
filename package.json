@@ -1,0 +1,12 @@
+{
+  "name": "node-NEDB-test",
+  "version": "0.0.1",
+  "description": "A project to test the NEDB persistant storage",
+  "dependencies": {
+    "nedb": "^0.10.5",
+    "express": "latest",
+    "body-parser": "latest",
+    "method-override": "latest",
+    "express-error-handler": "latest"
+  }
+}
