@@ -1,14 +1,14 @@
 var application_root 		 = __dirname,
-		express              = require('express'),
-		server               = express(),
-		DataStore            = require('nedb'),
-		db                   = {},
-		path                 = require('path'),
-		bodyParser           = require('body-parser'),
-		methodOverride       = require('method-override'),
-		errorHandler		 = require('express-error-handler'),
-		fs					 = require('fs'),
-		bcrypt				 = require('bcrypt-nodejs');
+		express        			 = require('express'),
+		server         			 = express(),
+		DataStore      			 = require('nedb'),
+		db             			 = {},
+		path           			 = require('path'),
+		bodyParser     			 = require('body-parser'),
+		methodOverride 			 = require('method-override'),
+		errorHandler   			 = require('express-error-handler'),
+		fs             			 = require('fs'),
+		bcrypt         			 = require('bcrypt-nodejs');
 
 db.users = new DataStore({filename: 'users', autoload: true});
 db.general = new DataStore({filename: 'db', autoload: true});
@@ -53,7 +53,7 @@ server.post('/login', function (req, res) {
 			msg = 'Error location user!!!';
 		}
 
-		if (user) {
+		if (user.length) {
 			msg = 'User located with username: '+req.body['user-name'];
 		}
 
