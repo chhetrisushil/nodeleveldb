@@ -25,7 +25,7 @@ server.get('/api', function (req, res) {
 	});
 });
 
-// server index.html
+// serve index.html
 server.get('/', function (req, res, next) {
 	fs.readFile('client/index.html', function (err, data) {
 		data = data.toString();
@@ -33,7 +33,35 @@ server.get('/', function (req, res, next) {
 	});
 });
 
+//serve register page
+server.get('/sign-up', function (req, res, next) {
+	fs.readFile('client/register.html', function (err, data) {
+		data = data.toString();
+		res.send(data);
+	});
+});
+
 server.post('/login', function (req, res) {
+	db.users.find({$where: function () {
+		var retVal = (this['user-name'] === req.body['user-name']
+				&& bcrypt.compareSync(req.body['user-password'], this['user-password']));
+
+		return retVal;
+	}}, function (err, user) {
+		var msg = 'Could not locate the user';
+		if (err) {
+			msg = 'Error location user!!!';
+		}
+
+		if (user) {
+			msg = 'User located with username: '+req.body['user-name'];
+		}
+
+		res.send(msg);
+	});
+});
+
+server.post('/register', function (req, res) {
 	//first check if it exists
 	db.users.find({'user-name': req.body['user-name']}, function (err, user) {
 		if (user.length) {
@@ -47,12 +75,12 @@ server.post('/login', function (req, res) {
 				}
 
 				db.users.insert({'user-name': req.body['user-name'], 'user-password': hash}, function (err, doc) {
+					var msg = 'Add successful!!!';
 					if (err) {
-						res.send('error occured while adding the user');
-						return;
+						msg = 'error occured while adding the user';
 					}
 
-					res.send('Add successful!!!');
+					res.send(msg);
 				});
 
 			});
