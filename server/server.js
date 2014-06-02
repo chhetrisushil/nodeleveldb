@@ -1,12 +1,12 @@
 var application_root 		 = __dirname,
 	express              	 = require('express'),
 	server               	 = express(),
-	db					 	 = require('./database.js'),
+	db					 	 = require('./database/database.js'),
 	bodyParser           	 = require('body-parser'),
 	methodOverride       	 = require('method-override'),
 	errorHandler		 	 = require('express-error-handler'),
-	routes				 	 = require('./routes.js'),
-	restApi				 	 = require('./restApi.js');
+	routes				 	 = require('./router/routes.js'),
+	restApi				 	 = require('./api/restApi.js');
 
 server.use(bodyParser());
 server.use(methodOverride());
