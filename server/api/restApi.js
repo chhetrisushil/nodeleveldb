@@ -20,7 +20,7 @@ module.exports = function (server, db) {
 				msg = 'Error location user!!!';
 			}
 
-			if (user) {
+			if (user.length) {
 				msg = 'User located with username: '+req.body['user-name'];
 			}
 
