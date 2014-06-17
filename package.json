@@ -8,6 +8,7 @@
     "body-parser": "latest",
     "method-override": "latest",
     "express-error-handler": "latest",
-    "bcrypt-nodejs": "latest"
+    "bcrypt-nodejs": "latest",
+    "ejs": "latest"
   }
 }
