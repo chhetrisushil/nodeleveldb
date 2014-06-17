@@ -3,7 +3,7 @@ var curDir 		 				 = __dirname,
 		DataStore          = require('nedb'),
 		db                 = {};
 
-db.users = new DataStore({filename: path.join(curDir, '/users'), autoload: true});
-db.general = new DataStore({filename: path.join(curDir, '/users'), autoload: true});
+db.users = new DataStore({filename: path.join(curDir, '/users.db'), autoload: true});
+db.general = new DataStore({filename: path.join(curDir, '/general.db'), autoload: true});
 
 module.exports = db;
